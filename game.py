@@ -33,7 +33,7 @@ if uAge > 17 and uAge < 60:
                         option = input("Would you like to Quit now: press 'y' to quit and 'n' to stay.\nEnter:")
                         if option == 'y':
                             print("Thank you for your attention..See you soon")
-                            break
+                            break 
                         elif option == 'n':
                             print("OKAY, let's dig more and more")
                 else:#lucky number
