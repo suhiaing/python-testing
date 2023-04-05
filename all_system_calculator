@@ -11,6 +11,15 @@ def to_decimal(num,u_type):
         i+=1
     return d_value
 
+def decimal_to(num,type2):
+    my_list = []
+    while int(num) > 0:
+        my_list.append(num%type2)
+        num = int(num/type2)
+    my_list.reverse()
+    num = "".join(str(i) for i in my_list)
+    return int(num)
+
 num_type = 0
 while True:
     while num_type not in [2, 8, 10, 16]:
