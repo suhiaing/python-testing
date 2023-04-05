@@ -1,0 +1,40 @@
+print("Welcome to my calculaotor")
+
+def to_decimal(num,u_type):
+    idx = len(num) - 1
+    i = int(0)
+    d_value = 0
+    while idx >= 0:
+        digit = int(num[idx])
+        d_value += digit * (u_type ** i)
+        idx-=1
+        i+=1
+    return d_value
+
+num_type = 0
+while True:
+    while num_type not in [2, 8, 10, 16]:
+        print("Which kind of number system do you want to calculate?")
+        num_type = int(input("(Type 2 8 10 16)Enter:"))
+    s_fnum = input("Enter first number")
+    s_snum = input("Enter second number")
+    while True:
+        to_do = input("Enter operator (+, -, *, /) ")
+        if num_type != 16:
+                d_fnum = to_decimal(s_fnum,num_type)
+                d_snum = to_decimal(s_snum,num_type)
+                if to_do == '+':
+                    result = d_fnum + d_snum
+                elif to_do == '-':
+                    result = d_fnum - d_snum
+                elif to_do == '*':
+                    result = d_fnum * d_snum
+                elif to_do == '/':
+                    result = d_fnum / d_snum
+                else:
+                    print("Invalid operator")
+                    continue
+                print(result)
+                num_type = 0
+                break
+            
