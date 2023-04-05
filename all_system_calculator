@@ -1,14 +1,18 @@
 print("Welcome to my calculaotor")
 
 def to_decimal(num,u_type):
-    idx = len(num) - 1
-    i = int(0)
     d_value = 0
+    idx = len(num) - 1
+    i = 0
     while idx >= 0:
-        digit = int(num[idx])
+        if ord(num[idx]) >= 65:
+            adding = ord(num[idx]) - 55
+            digit = adding
+        else:
+            digit = int(num[idx])
         d_value += digit * (u_type ** i)
-        idx-=1
-        i+=1
+        idx -= 1
+        i += 1
     return d_value
 
 def decimal_to(num,u_type):
@@ -22,11 +26,9 @@ def decimal_to(num,u_type):
 
 num_type = 0
 while True:
-    while num_type not in [2, 8, 10]:
+    while num_type not in [2, 8, 10, 16]:
         print("Which kind of number system do you want to calculate?")
         num_type = int(input("(Type 2 8 10 16)Enter:"))
-        if num_type == 16:
-            print("Sorry! our current version doesn't abality for hexadecimal system.Please Try another else")
 
     s_fnum = input("Enter first number")
     s_snum = input("Enter second number")
