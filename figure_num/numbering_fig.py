@@ -1,59 +1,57 @@
 def read_data():
-    with open('db.txt', 'r') as f:
+    
+    with open('da.txt', 'r') as f:
 
-        content = f.read().splitlines()
+        list = f.read().splitlines()
+
+    length_of_list = len(list)
+
+    for line in range(length_of_list):
+
+        content = list[0].replace('figure - 1.', '')
+
+        list.append(content)
+
+        list.remove(list[0])
+
+        print(content)
 
     f.close()
 
-    return content
+    return list
 
-# def ass_data(to_remove):
-    
-#     for i in range(len(to_remove)):
+def write_data(data):
 
-#         num = to_remove[i][len(to_remove[i])-1]
+        with open('db.txt', 'w') as f:
 
-#         print(num)
+            length_of_data = len(data)
 
-def ass_data(to_remove):
-    
-    for i in to_remove:
+            for i in range(length_of_data):
 
-        num = 1
+                if data[0][1] != '(' :
 
-        length = len(i)
+                    num = str(data[0][0]) + str(data[0][1])
 
-        for j in i:
+                    line = data[0][2:len(data[0])]
 
-            if ord(i[length - num]) >= 48 and ord(i[length - num]) <= 57:
+                else:
+                    #9("Okay 9")
+                    num = str(data[0][0])
+                    
+                    line = data[0][1:len(data[0])]
+                    
+                data.append("figure - 1."+ str(i+1) + line + '\n')
 
-                print(i[length - num])
+                data.remove(data[0])
 
-                num = num + 1
+            f.writelines(data)    
 
-            else:
-
-                break
-            
-
+            f.close()
 
 if __name__ == '__main__':
 
     data = read_data()
 
-    ass_data(data)
+    data.remove(data[0])
 
-    # okay = True
-    # while okay == True:
-
-    #     try:
-
-    #         remove_item = int(input("Enter data to pop:"))
-
-    #         okay = False
-
-    #     except Exception as error:
-
-    #         print(error)
-
-
+    write_data(data)
